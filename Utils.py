@@ -297,7 +297,7 @@ def prepare_add_wissem (cons,add) :
 
 def fill_add_kmeans(add, cons):
     from sklearn.cluster import KMeans
-    kmeans = KMeans(n_clusters=2, random_state=0).fit(cons.drop('meter_id', axis=1))
+    kmeans = KMeans(n_clusters=130, random_state=0).fit(cons.drop('meter_id', axis=1)) # n_cluster =3248/nb de compteurs par cluster
     cluster_map = pd.DataFrame()
     cluster_map['data_index'] = cons.drop('meter_id', axis=1).index.values
     cluster_map['cluster'] = kmeans.labels_
@@ -331,7 +331,7 @@ def fill_add_distance(add, cons):
             x = cons[cons['meter_id'] == row['meter_id']].transpose()[1:].values
             dist = [(np.linalg.norm(x - (cons[cons['meter_id'] == y].transpose()[1:].values)), y) for y in
                     cons['meter_id'].values if y != row['meter_id']]
-            meters = [pair[1] for pair in sorted(dist, key=lambda x: x[0])[:5]]
+            meters = [pair[1] for pair in sorted(dist, key=lambda x: x[0])[:25]] # 25 a9rab 25 compteurs
             L = [add[add['meter_id'] == meters[i]]['dwelling_type'].values[0] for i in range(5)]
             add.at[index, 'dwelling_type'] = 2 if (str(most_frequent(L)) == 'nan') else most_frequent(L)
 
@@ -339,7 +339,7 @@ def fill_add_distance(add, cons):
             x = cons[cons['meter_id'] == row['meter_id']].transpose()[1:].values
             dist = [(np.linalg.norm(x - (cons[cons['meter_id'] == y].transpose()[1:].values)), y) for y in
                     cons['meter_id'].values if y != row['meter_id']]
-            meters = [pair[1] for pair in sorted(dist, key=lambda x: x[0])[:5]]
+            meters = [pair[1] for pair in sorted(dist, key=lambda x: x[0])[:25]] # a9rab 25 compteurs
             L = [add[add['meter_id'] == meters[i]]['num_bedrooms'].values[0] for i in range(5)]
             add.at[index, 'num_bedrooms'] = 2 if (str(most_frequent(L)) == 'nan') else most_frequent(L)
     return (add)
