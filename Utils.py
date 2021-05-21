@@ -326,7 +326,7 @@ def fill_add_kmeans(add, cons):
 def fill_add_distance(add, cons):
     import math
     from tqdm import tqdm
-    for index, row in tqdm(add.head().iterrows()):
+    for index, row in tqdm(add.iterrows()):
         if (math.isnan(row['dwelling_type'])):
             x = cons[cons['meter_id'] == row['meter_id']].transpose()[1:].values
             dist = [(np.linalg.norm(x - (cons[cons['meter_id'] == y].transpose()[1:].values)), y) for y in
