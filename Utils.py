@@ -280,7 +280,7 @@ def most_frequent(List):
 
     return num
 
-def prepare_add (cons,add) :
+def prepare_add_wissem (cons,add) :
 
   L = [cons.columns[(1+i*48)].split()[0] for i in range(365)]
   add = add[['meter_id','dwelling_type','num_bedrooms']]
@@ -345,7 +345,7 @@ def fill_add_distance(add, cons):
     return (add)
 
 #
-# def prepare_add(cons,add)  : # fonction n5arjo biha li nést7a9ouh ml add info
+# def prepare_add_semi(cons,add)  : # fonction n5arjo biha li nést7a9ouh ml add info
 #   add = add[['meter_id','dwelling_type','num_bedrooms']]
 #   df = cons['meter_id']
 #   df = pd.DataFrame(df)
