@@ -78,6 +78,7 @@ def main():
     # add = prepare_add(cons, add)
     add = prepare_add (cons,add)
     add = fill_add_kmeans(add, cons)
+#     add = fill_add_distance(add, cons)
     # ta74ir train
     for i in range(3):
         print('itération',i)
