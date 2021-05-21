@@ -641,7 +641,6 @@ def weather_avg_to_text(rule) :
   else :
     ch = 'the average temperature is between  ' + L[0]+ ' and ' + L[4]
   return(ch)
-*
 
 
 
