@@ -75,8 +75,8 @@ def main():
 
     # ta74ir add
     print("ta74ir add")
-    # add = prepare_add(cons, add)
-    add = prepare_add (cons,add)
+    add = prepare_add_wissem (cons,add)
+    add = prepare_add_semi (cons,add)
     add = fill_add_kmeans(add, cons)
 #     add = fill_add_distance(add, cons)
     # ta74ir train
