@@ -260,13 +260,13 @@ def impute_na(cons , janv_moy , fev_moy , mars_moy , avril_moy , may_moy , juin_
                 s = s + 1
                 if (math.isnan(row['consommation'])):
                     cons.at[l, index] = dec_moy.iloc[s]['consommation'] + d
-        #
-        # if ((cons.isnull().sum().values[0]) != 0 ) : # kén fo4lét valeur né9sa (probabilité ne dépasse pas 1/100 ) ==> random sampling
-        #     random_sample = meter['consommation'].dropna().sample(meter['consommation'].isnull().sum(), random_state=0,replace=True)
-        #     # pandas needs to have the same index in order to merge datasets
-        #     random_sample.index = meter[meter['consommation'].isnull()].index
-        #     meter.loc[meter['consommation'].isnull(), 'consommation'] = random_sample
+        
+        if ((cons.isnull().sum().values[0]) != 0 ) :
+          for x in cons.columns : 
+            random_sampling(cons,x)
+          
 
+          
 
 def most_frequent(List):
     counter = 0
