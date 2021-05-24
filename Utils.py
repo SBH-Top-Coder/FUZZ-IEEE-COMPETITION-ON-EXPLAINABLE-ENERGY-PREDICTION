@@ -261,10 +261,14 @@ def impute_na(cons , janv_moy , fev_moy , mars_moy , avril_moy , may_moy , juin_
                 if (math.isnan(row['consommation'])):
                     cons.at[l, index] = dec_moy.iloc[s]['consommation'] + d
         
-    if ((cons.isnull().sum().values[0]) != 0 ) :
+    Nans = False
+    for x in (cons.isnull().sum().values)  : 
+      if (x != 0) :
+        Nans = True 
+    if (Nans == True ): 
       for x in cons.columns :
-        random_sampling(cons,x)
-             
+          random_sampling(cons,x)
+
 
           
 
